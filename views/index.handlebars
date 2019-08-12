@@ -1,0 +1,295 @@
+<div id="home">
+  <!-- SIGN UP -->
+  <div class="modal fade" id="sign_up" tabindex="-1" role="dialog" aria-labelledby="sign_up_label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="sign_up_label">Sign up</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="clearfix mb-4" action="POST">
+            <div class="form-group">
+              <label for="">User name</label>
+              <input type="text" class="form-control signUpName" aria-describedby="example-text" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="">Password</label>
+              <input type="password" class="form-control signUpPassword" aria-describedby="example-text" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="">Confirm password</label>
+              <input type="password" class="form-control signUpPasswordAgain" aria-describedby="example-text"
+                placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="">E-mail address</label>
+              <input type="text" class="form-control signUpEmail" aria-describedby="example-text" placeholder="">
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary login_btn" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary signUpSubmit login_btn">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- sign up end-->
+
+  <!-- sign in -->
+  <div class="modal fade" id="sign_in" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Sign in</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="g-signin2" data-onsuccess="onSignIn"></div>
+          <form class="clearfix mb-4" action="POST">
+            <div class="form-group">
+              <label for="">User name</label>
+              <input type="text" class="form-control signInName" aria-describedby="example-text" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="">Password</label>
+              <input type="password" class="form-control signInPassword" aria-describedby="example-text" placeholder="">
+            </div>
+
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary login_close_btn" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary signInSubmit login_btn">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- sign in end-->
+
+  {{!-- <div id="home"> --}}
+
+  <div class="container navbar-light warning-color lighten-5 d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3">
+    <a class="logo my-0 mr-md-auto navbar-brand" href="#">
+      <img src="../assets/img/Pantry.png" height="60" class="d-inline-block align-top" alt="pantryassembler">
+    </a>
+
+    <ul class="nav my-2 my-md-0 mr-md-3">
+      {{!-- <li class="nav-item">
+        <a class="nav-link active" href="#savedshoppinglist">SAVED RECIPES</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#savedshoppinglist">SHOPPING LIST</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#share">SHARE!</a>
+      </li> --}}
+      <div id="log_area">
+        {{!--         
+      <button type="button" class="loginbtn btn btn-danger btn-sm" data-toggle="modal" data-target="#sign_up">SIGN
+        UP</button>
+
+      <button type="button" class="loginbtn btn btn-danger btn-sm" data-toggle="modal" data-target="#sign_in">SIGN
+        IN</button> --}}
+      </div>
+    </ul>
+  </div>
+  {{!-- SEARCH BY INGREDIENT --}}
+  <div class="jumbotron jumbotron-fluid align-center align-items-center text-center">
+    <div class="container">
+      <form>
+        <div class="form-group">
+          <h4>What's in your pantry today?</h4>
+          <label for="ingredientsInput">Search recipes by ingredient</label>
+          <div class="row justify-content-md-center">
+            <input type="text" class="w-50 form-control" id="ingredientsInput" placeholder="Ex. Spinach, pork, eggs">
+            <br>
+          </div>
+          <br>
+          <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+          <button type="submit" id="ingredientsSubmitBtn" class="btn btn-danger">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+  <!-- RESULTS RECIPES BY INGREDIENT-->
+
+  <div class="container" id="recipesByIngredients">
+    <div class="row">
+      <div class="col-12 text-center subtitles" id="foundRecipesHeader">
+      </div>
+      <div class="col-12 text-center subtitles" id="noRecipesFound">
+        <br>
+        <br>
+      </div>
+    </div>
+    <div class="row" id="foundRecipes">
+    </div>
+  </div>
+
+  <div class="container" id="randomRecipes">
+    <div class="row">
+      <div class="col-12 text-center subtitles" id="foundRandomRecipesHeader">
+      </div>
+    </div>
+    <div class="row" id="foundRandomRecipes">
+    </div>
+  </div>
+
+  <section id="savedshoppinglist">
+    <div class="container">
+      <div class="row">
+        {{!-- <div class="col py-3 px-lg-5 border bg-light">
+          <div class="subtitles">Saved dishes!</div> --}}
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  {{!-- SHARE YOUR RECIPE --}}
+  {{!-- <br>
+  <section id="share">
+    <div class="container">
+      <div class="row">
+        <div class="col py-3 px-lg-5 border bg-light">
+          <div class="subtitles">Add recipe</div>
+          <hr>
+          <form class="create-form" id="newRecipe">
+            <div class="form-group">
+              <label for="recipeName">Recipe name:</label>
+              <input class="form-control" type="text" id="recipeName">
+            </div>
+            <div class="form-group">
+              <label for="recipeDescription">Description:</label>
+              <input class="form-control" type="text" id="recipeDescription">
+            </div>
+            <div class="form-group">
+              <label for="recipeInstructions">Instructions:</label>
+              <input class="form-control" type="text" id="recipeInstructions" >
+            </div>
+            <div class="form-group">
+              <label for="recipeIngredients">Ingredients:</label>
+              <textarea class="form-control" id="recipeIngredients" rows="3" placeholder="Ex. Spinach, pork, eggs"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="imgInput">Link to the recipe image:</label>
+              <input class="form-control" type="text" id="imgInput" name="name">
+            </div>
+            <br>
+            <button class="btn btn-danger btn-sm" type="submit" id="addRecipeBtn">Add now!</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section> --}}
+
+  {{!-- ADD FOOD TO YOUR PANTRY--}}
+  <div class="container">
+    <div id="add_food_div" class="row">
+      <div class="col py-3 px-lg-5 border bg-light">
+        <div class="subtitles">Add food to your pantry</div>
+        <hr>
+        <form class="create-form" id="">
+          <div class="form-group">
+            <label for="">Ingredient name:</label>
+            <input type="text" id="add_ingredient" name="name">
+          </div>
+          <div class="form-group">
+            <label for="" type="number">Quantity:</label>
+            <input type="text" id="ingredient_quantity" name="name">
+          </div>
+          <div class="form-group">
+            <label for="">Unit:</label>
+            <input type="text" id="ingredient_unit" name="name">
+          </div>
+          <div class="form-group">
+            <label for="" type="date">Expiration Date:</label>
+            <input type="text" id="ingredient_expireDate" placeholder="Ex. 07/22/2019" name="name">
+          </div>
+          <div class="form-group">
+
+            <button class="btn btn-danger btn-sm" type="submit" id="add_food">Add now!</button>
+          </div>
+        </form>
+        <br>
+        {{!-- <div class="col-6"> --}}
+        <table class="table table-sm table-danger">
+          <thead id="food-thead">
+
+          </thead>
+          <tbody id="foodInfo">
+          </tbody>
+        </table>
+        {{!-- </div> --}}
+      </div>
+      <br>
+      <div class="col py-3 px-lg-5 border bg-light">
+        <div class="subtitles">Shopping list</div>
+        <hr>
+        <br>
+        <ul class="list-group item-list">
+          <li class="list-group-item new-item">
+            <form id="item-form">
+              <input class="new-item form-control" placeholder="Item name" type="text" />
+              <button type="submit" class="btn btn-danger btn-sm">Add to list</button>
+            </form>
+          </li>
+          <span class="item-container"></span>
+        </ul>
+      </div>
+    </div>
+  </div>{{!-- add food end --}}
+
+  <!-- profile -->
+  <div class="modal fade" id="profile" tabindex="-1" role="dialog" aria-labelledby="sign_up_label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="sign_up_label">User Profile</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="clearfix mb-4" action="POST">
+            <div class="form-group">
+              <label for="">User name</label>
+              <p id="user_name_profile"></p>
+            </div>
+            <div class="form-group">
+              <label for="">Your E-mail Address</label>
+              <p id="user_email_profile"></p>
+            </div>
+            <div class="form-group">
+              <label for="">Your Password</label>
+              <p id="user_password_profile"></p>
+            </div>
+            <div class="form-group">
+              <label for="">Change Password? Input New Password Here</label>
+              <input type="text" class="form-control change_password" aria-describedby="example-text" placeholder="">
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary  changePassword_btn">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- profile end-->
+
+
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
